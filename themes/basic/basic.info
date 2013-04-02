@@ -1,0 +1,9 @@
+name = AçãoEducativa: ConsultaApp
+description = Default theme for AçãoEducativa: ConsultaApp
+
+engine = phptemplate
+base theme = kalatheme
+core = 7.x
+php = 5.2
+
+stylesheets[all][] = styles.css
