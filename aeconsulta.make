@@ -62,3 +62,14 @@ projects[kalatheme][version] = 1.0-rc3
 projects[kalatheme][subdir] = contrib
 libraries[bootstrap][download][type] = get
 libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
+
+; AE Consultation App
+projects[webform][version] = 4.0-alpha6
+projects[webform][subdir] = contrib
+projects[options_element][version] = 1.8
+projects[options_element][subdir] = contrib
+projects[form_builder][version] = 1.x-dev
+projects[form_builder][subdir] = contrib
+projects[form_builder][download][type] = git
+projects[form_builder][download][revision] = 8f91793
+projects[form_builder][download][branch] = 7.x-1.x
