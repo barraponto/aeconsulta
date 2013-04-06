@@ -1,6 +1,7 @@
 name = AçãoEducativa: ConsultaApp
 description = Install site for AçãoEducativa: ConsultaApp
 core = 7.x
+exclusive = TRUE
 
 files[] = aeconsulta.profile
 
