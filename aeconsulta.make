@@ -75,3 +75,6 @@ projects[form_builder][subdir] = contrib
 projects[form_builder][download][type] = git
 projects[form_builder][download][revision] = 8f91793
 projects[form_builder][download][branch] = 7.x-1.x
+
+; Extra patches
+projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch
