@@ -67,6 +67,7 @@ libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets
 ; AE Consultation App
 projects[webform][version] = 4.0-alpha6
 projects[webform][subdir] = contrib
+projects[webform][patch][1963870] = http://drupal.org/files/webform-content_type_form_settings-1963870-4.patch
 projects[options_element][version] = 1.8
 projects[options_element][subdir] = contrib
 projects[form_builder][version] = 1.x-dev
