@@ -30,6 +30,7 @@ projects[panopoly_widgets][subdir] = panopoly
 
 projects[panopoly_admin][version] = 1.0-rc3
 projects[panopoly_admin][subdir] = panopoly
+projects[panopoly_admin][patch][1963968] = http://drupal.org/files/panopoly_admin-undefined_index_in_hook_menu_link_alter.patch
 
 projects[panopoly_users][version] = 1.0-rc3
 projects[panopoly_users][subdir] = panopoly
