@@ -61,21 +61,16 @@ projects[uuid][patch][1605284] = http://drupal.org/files/1605284-define-types-fo
 ; The Panopoly Kalatheme
 projects[kalatheme][version] = 1.0-rc3
 projects[kalatheme][subdir] = contrib
-projects[kalatheme][patch][1935440] = http://drupal.org/files/kalatheme-illegal-string-offset-1935440-2.patch
+projects[kalatheme][patch][1935440] = http://drupal.org/files/kalatheme-illegal-string-offset-1935440-4.patch
 libraries[bootstrap][download][type] = get
 libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
 
 ; AE Consultation App
-projects[webform][version] = 4.0-alpha6
-projects[webform][subdir] = contrib
-projects[webform][patch][1963870] = http://drupal.org/files/webform-content_type_form_settings-1963870-4.patch
-projects[options_element][version] = 1.8
-projects[options_element][subdir] = contrib
-projects[form_builder][version] = 1.x-dev
-projects[form_builder][subdir] = contrib
-projects[form_builder][download][type] = git
-projects[form_builder][download][revision] = 8f91793
-projects[form_builder][download][branch] = 7.x-1.x
+projects[ae_consultation][type] = "module"
+projects[ae_consultation][download][type] = "git"
+projects[ae_consultation][download][url] = "git://github.com/barraponto/ae_consultation.git"
+projects[ae_consultation][subdir] = "aeconsulta"
 
 ; Extra patches
+projects[field_group][subdir] = contrib
 projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch

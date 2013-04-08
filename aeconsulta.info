@@ -42,3 +42,6 @@ dependencies[] = panopoly_wysiwyg
 dependencies[] = navbar
 dependencies[] = devel
 dependencies[] = uuid
+
+; AE Consultation App
+dependencies[] = ae_consultation
