@@ -61,6 +61,7 @@ projects[uuid][patch][1605284] = http://drupal.org/files/1605284-define-types-fo
 ; The Panopoly Kalatheme
 projects[kalatheme][version] = 1.0-rc3
 projects[kalatheme][subdir] = contrib
+projects[kalatheme][patch][1935440] = http://drupal.org/files/kalatheme-illegal-string-offset-1935440-2.patch
 libraries[bootstrap][download][type] = get
 libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
 
