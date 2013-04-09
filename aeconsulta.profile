@@ -46,6 +46,47 @@ function aeconsulta_init() {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function aeconsulta_form_ae_consultation_node_form_alter(&$form, &$form_state) {
+  dsm($form);
+  // If this is a new node, $nid should be NULL.
+  $nid = $form['nid']['#value'];
+  $path = $nid ? 'node/' . $nid : $nid;
+
+  $form['menu']['frontpage'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Make this the front page.'),
+    '#default_value' => (drupal_get_normal_path(variable_get('site_frontpage', FALSE)) === $path)
+  );
+}
+
+/**
+ * Helper function for aeconsulta_node_insert and aeconsulta_node_update.
+ */
+function _aeconsulta_node_frontpage($node) {
+  if ($node->type == 'ae_consultation' &! empty($node->menu['frontpage'])) {
+    variable_set('site_frontpage', 'node/' . $node->nid);
+    unset($node->menu['frontpage']);
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function aeconsulta_node_insert($node) {
+  _aeconsulta_node_frontpage($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function aeconsulta_node_update($node) {
+  _aeconsulta_node_frontpage($node);
+}
+
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function aeconsulta_form_user_register_form_alter(&$form, &$form_state) {
