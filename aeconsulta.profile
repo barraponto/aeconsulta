@@ -49,23 +49,24 @@ function aeconsulta_init() {
  * Implements hook_form_alter().
  */
 function aeconsulta_form_ae_consultation_node_form_alter(&$form, &$form_state) {
-  dsm($form);
-  // If this is a new node, $nid should be NULL.
-  $nid = $form['nid']['#value'];
-  $path = $nid ? 'node/' . $nid : $nid;
+  if (user_access('edit site fronpage from node form')) {
+    // If this is a new node, $nid should be NULL.
+    $nid = $form['nid']['#value'];
+    $path = $nid ? 'node/' . $nid : $nid;
 
-  $form['menu']['frontpage'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Make this the front page.'),
-    '#default_value' => (drupal_get_normal_path(variable_get('site_frontpage', FALSE)) === $path)
-  );
+    $form['menu']['frontpage'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Make this the front page.'),
+      '#default_value' => (drupal_get_normal_path(variable_get('site_frontpage', FALSE)) === $path)
+    );
+  }
 }
 
 /**
  * Helper function for aeconsulta_node_insert and aeconsulta_node_update.
  */
 function _aeconsulta_node_frontpage($node) {
-  if ($node->type == 'ae_consultation' &! empty($node->menu['frontpage'])) {
+  if ($node->type == 'ae_consultation' && !empty($node->menu['frontpage']) && user_access('edit site fronpage from node form')) {
     variable_set('site_frontpage', 'node/' . $node->nid);
     unset($node->menu['frontpage']);
   }
@@ -84,7 +85,6 @@ function aeconsulta_node_insert($node) {
 function aeconsulta_node_update($node) {
   _aeconsulta_node_frontpage($node);
 }
-
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -112,4 +112,16 @@ function aeconsulta_user_insert(&$edit, $account, $category) {
         array('@user-logout' => url('user/logout'), '@user-name' => $account->name)), 'info');
     }
   }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function aeconsulta_permission() {
+  return array(
+    'edit site frontpage from node form' =>  array(
+      'title' => t('Set node as frontpage'),
+      'description' => t('Set a node as frontpage from the node edit form.'),
+    ),
+  );
 }
