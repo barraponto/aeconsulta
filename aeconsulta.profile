@@ -49,7 +49,7 @@ function aeconsulta_init() {
  * Implements hook_form_alter().
  */
 function aeconsulta_form_ae_consultation_node_form_alter(&$form, &$form_state) {
-  if (user_access('edit site fronpage from node form')) {
+  if (user_access('edit site frontpage from node form')) {
     // If this is a new node, $nid should be NULL.
     $nid = $form['nid']['#value'];
     $path = $nid ? 'node/' . $nid : $nid;
@@ -66,7 +66,7 @@ function aeconsulta_form_ae_consultation_node_form_alter(&$form, &$form_state) {
  * Helper function for aeconsulta_node_insert and aeconsulta_node_update.
  */
 function _aeconsulta_node_frontpage($node) {
-  if ($node->type == 'ae_consultation' && !empty($node->menu['frontpage']) && user_access('edit site fronpage from node form')) {
+  if ($node->type == 'ae_consultation' && !empty($node->menu['frontpage']) && user_access('edit site frontpage from node form')) {
     variable_set('site_frontpage', 'node/' . $node->nid);
     unset($node->menu['frontpage']);
   }
