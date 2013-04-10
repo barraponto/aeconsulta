@@ -125,3 +125,14 @@ function aeconsulta_permission() {
     ),
   );
 }
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function aeconsulta_field_widget_addressfield_standard_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['field_name'] == 'field_whereabouts') {
+    $element['street_block']['#access'] = FALSE;
+    $element['locality_block']['postal_code']['#access'] = FALSE;
+    $element['locality_block']['dependent_locality']['#access'] = FALSE;
+  }
+}
