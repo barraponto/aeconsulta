@@ -84,3 +84,6 @@ projects[honeypot][subdir] = contrib
 ; Extra patches
 projects[field_group][subdir] = contrib
 projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch
+
+; Localization profile
+projects[l10n_install][version] = 1.0-beta24

@@ -6,7 +6,9 @@
  * Allows the profile to alter the site configuration form.
  */
 function aeconsulta_form_install_configure_form_alter(&$form, $form_state) {
-
+  // Call the hook_form_alter from l10n_install profile.
+  require_once(DRUPAL_ROOT . '/profiles/l10n_install/l10n_install.profile');
+  l10n_install_form_install_configure_form_alter($form, $form_state);
 }
 
 /**
@@ -15,7 +17,11 @@ function aeconsulta_form_install_configure_form_alter(&$form, $form_state) {
 function aeconsulta_install_tasks(&$install_state) {
   $tasks = array();
 
-  // Add the Panopoly app selection to the installation process
+  // Add Localization tasks to the installation process.
+  require_once(DRUPAL_ROOT . '/profiles/l10n_install/l10n_install.profile');
+  $tasks = $tasks + l10n_install_install_tasks($install_state);
+
+  // Add the Panopoly app selection to the installation process.
   require_once(drupal_get_path('module', 'apps') . '/apps.profile.inc');
   $tasks = $tasks + apps_profile_install_tasks($install_state, array('machine name' => 'panopoly', 'default apps' => array()));
 
@@ -26,6 +32,10 @@ function aeconsulta_install_tasks(&$install_state) {
  * Implements hook_install_tasks_alter()
  */
 function aeconsulta_install_tasks_alter(&$tasks, $install_state) {
+  // Remove core steps for translation imports.
+  require_once(DRUPAL_ROOT . '/profiles/l10n_install/l10n_install.profile');
+  l10n_install_install_tasks_alter($tasks, $install_state);
+
   // Magically go one level deeper in solving years of dependency problems
   require_once(drupal_get_path('module', 'panopoly_core') . '/panopoly_core.profile.inc');
   $tasks['install_load_profile']['function'] = 'panopoly_core_install_load_profile';

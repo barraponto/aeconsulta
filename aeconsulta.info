@@ -43,6 +43,10 @@ dependencies[] = navbar
 dependencies[] = devel
 dependencies[] = uuid
 
+; Localization
+dependencies[] = locale
+dependencies[] = l10n_update
+
 ; AE Apps
 dependencies[] = ae_consultation
 dependencies[] = ae_participants
