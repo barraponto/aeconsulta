@@ -81,9 +81,9 @@ projects[ae_participants][subdir] = "aeconsulta"
 projects[honeypot][version] = 1.14
 projects[honeypot][subdir] = contrib
 
-; Extra patches
-projects[field_group][subdir] = contrib
-projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch
-
 ; Localization profile
 projects[l10n_install][version] = 1.0-beta24
+projects[l10n_update] = 1.0-beta3
+projects[l10n_update][subdir] = contrib
+projects[l10n_client] = 1.2
+projects[l10n_client][subdir] = contrib
