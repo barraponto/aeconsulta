@@ -13,6 +13,11 @@ function aeconsulta_install() {
   // Allow visitor account creation, but with administrative approval.
   variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
 
+  //Configure Honeypot settings
+  variable_set('honeypot_form_user_pass', 1);
+  variable_set('honeypot_form_user_register_form', 1);
+  variable_set('honeypot_form_webforms', 1);
+
   // Enable default permissions for system roles.
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));

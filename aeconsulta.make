@@ -77,6 +77,10 @@ projects[ae_participants][download][type] = "git"
 projects[ae_participants][download][url] = "git://github.com/barraponto/ae_participants.git"
 projects[ae_participants][subdir] = "aeconsulta"
 
+; Honeypot spam protection
+projects[honeypot][version] = 1.14
+projects[honeypot][subdir] = contrib
+
 ; Extra patches
 projects[field_group][subdir] = contrib
 projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch

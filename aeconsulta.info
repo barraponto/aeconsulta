@@ -46,3 +46,6 @@ dependencies[] = uuid
 ; AE Apps
 dependencies[] = ae_consultation
 dependencies[] = ae_participants
+
+; Extras
+dependencies[] = honeypot
