@@ -11,6 +11,12 @@ projects[kw_itemnames][download][type] = "git"
 projects[kw_itemnames][download][url] = "git://github.com/kraftwagen/kw-itemnames.git"
 projects[kw_itemnames][subdir] = "kraftwagen"
 
+; Extra patches
+; Moved up here to override patches from included Makefiles
+; See http://drupal.org/node/1621030
+projects[field_group][subdir] = contrib
+projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch
+
 ; The Panopoly Foundation
 
 projects[panopoly_core][version] = 1.0-rc3
