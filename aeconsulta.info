@@ -43,5 +43,6 @@ dependencies[] = navbar
 dependencies[] = devel
 dependencies[] = uuid
 
-; AE Consultation App
+; AE Apps
 dependencies[] = ae_consultation
+dependencies[] = ae_participants

@@ -71,6 +71,12 @@ projects[ae_consultation][download][type] = "git"
 projects[ae_consultation][download][url] = "git://github.com/barraponto/ae_consultation.git"
 projects[ae_consultation][subdir] = "aeconsulta"
 
+; AE Participants App
+projects[ae_participants][type] = "module"
+projects[ae_participants][download][type] = "git"
+projects[ae_participants][download][url] = "git://github.com/barraponto/ae_participants.git"
+projects[ae_participants][subdir] = "aeconsulta"
+
 ; Extra patches
 projects[field_group][subdir] = contrib
 projects[field_group][patch][1963740] = http://drupal.org/files/field_group-proper_colspans-1963740-1.patch
