@@ -56,48 +56,6 @@ function aeconsulta_init() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
- */
-function aeconsulta_form_node_form_alter(&$form, &$form_state, $form_id) {
-  $content_type = $form['#node']->type;
-  if (in_array($content_type, array('ae_consultation', 'panopoly_page')) && user_access('edit site frontpage from node form')) {
-    // If this is a new node, $nid should be NULL.
-    $nid = $form['nid']['#value'];
-    $path = $nid ? 'node/' . $nid : $nid;
-
-    $form['menu']['frontpage'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Make this the front page.'),
-      '#default_value' => (drupal_get_normal_path(variable_get('site_frontpage', FALSE)) === $path)
-    );
-  }
-}
-
-/**
- * Helper function for aeconsulta_node_insert and aeconsulta_node_update.
- */
-function _aeconsulta_node_frontpage($node) {
-  if ($node->type == 'ae_consultation' && !empty($node->menu['frontpage']) && user_access('edit site frontpage from node form')) {
-    variable_set('site_frontpage', 'node/' . $node->nid);
-    unset($node->menu['frontpage']);
-  }
-}
-
-/**
- * Implements hook_node_insert().
- */
-function aeconsulta_node_insert($node) {
-  _aeconsulta_node_frontpage($node);
-}
-
-/**
- * Implements hook_node_update().
- */
-function aeconsulta_node_update($node) {
-  _aeconsulta_node_frontpage($node);
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  */
 function aeconsulta_form_user_register_form_alter(&$form, &$form_state) {
@@ -125,25 +83,3 @@ function aeconsulta_user_insert(&$edit, $account, $category) {
   }
 }
 
-/**
- * Implements hook_permission().
- */
-function aeconsulta_permission() {
-  return array(
-    'edit site frontpage from node form' =>  array(
-      'title' => t('Set node as frontpage'),
-      'description' => t('Set a node as frontpage from the node edit form.'),
-    ),
-  );
-}
-
-/**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter().
- */
-function aeconsulta_field_widget_addressfield_standard_form_alter(&$element, &$form_state, $context) {
-  if ($context['field']['field_name'] == 'field_whereabouts') {
-    $element['street_block']['#access'] = FALSE;
-    $element['locality_block']['postal_code']['#access'] = FALSE;
-    $element['locality_block']['dependent_locality']['#access'] = FALSE;
-  }
-}

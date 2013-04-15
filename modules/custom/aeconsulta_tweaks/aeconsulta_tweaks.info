@@ -1,0 +1,4 @@
+name = AE Consulta Tweaks
+description = Instance-specific tweaks for AE Consulta.
+package = AE Consulta
+core = 7.x
