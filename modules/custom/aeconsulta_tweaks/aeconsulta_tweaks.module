@@ -10,7 +10,7 @@
  */
 function aeconsulta_tweaks_form_node_form_alter(&$form, &$form_state, $form_id) {
   $content_type = $form['#node']->type;
-  if (in_array($content_type, array('ae_consultation', 'panopoly_page')) && user_access('edit site frontpage from node form')) {
+  if (user_access('edit site frontpage from node form')) {
     // If this is a new node, $nid should be NULL.
     $nid = $form['nid']['#value'];
     $path = $nid ? 'node/' . $nid : $nid;
@@ -24,27 +24,13 @@ function aeconsulta_tweaks_form_node_form_alter(&$form, &$form_state, $form_id) 
 }
 
 /**
- * Helper function for aeconsulta_tweaks_node_insert and aeconsulta_tweaks_node_update.
+ * Implements hook_node_presave().
  */
-function _aeconsulta_tweaks_node_frontpage($node) {
-  if ($node->type == 'ae_consultation' && !empty($node->menu['frontpage']) && user_access('edit site frontpage from node form')) {
+function aeconsulta_tweaks_node_presave($node) {
+  if (!empty($node->menu['frontpage']) && user_access('edit site frontpage from node form')) {
     variable_set('site_frontpage', 'node/' . $node->nid);
     unset($node->menu['frontpage']);
   }
-}
-
-/**
- * Implements hook_node_insert().
- */
-function aeconsulta_tweaks_node_insert($node) {
-  _aeconsulta_tweaks_node_frontpage($node);
-}
-
-/**
- * Implements hook_node_update().
- */
-function aeconsulta_tweaks_node_update($node) {
-  _aeconsulta_tweaks_node_frontpage($node);
 }
 
 /**
