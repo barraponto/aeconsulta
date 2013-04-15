@@ -56,10 +56,11 @@ function aeconsulta_init() {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
-function aeconsulta_form_ae_consultation_node_form_alter(&$form, &$form_state) {
-  if (user_access('edit site frontpage from node form')) {
+function aeconsulta_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $content_type = $form['#node']->type;
+  if (in_array($content_type, array('ae_consultation', 'panopoly_page')) && user_access('edit site frontpage from node form')) {
     // If this is a new node, $nid should be NULL.
     $nid = $form['nid']['#value'];
     $path = $nid ? 'node/' . $nid : $nid;
