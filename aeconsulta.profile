@@ -17,13 +17,13 @@ function aeconsulta_form_install_configure_form_alter(&$form, $form_state) {
 function aeconsulta_install_tasks(&$install_state) {
   $tasks = array();
 
-  // Add Localization tasks to the installation process.
-  require_once(DRUPAL_ROOT . '/profiles/l10n_install/l10n_install.profile');
-  $tasks = $tasks + l10n_install_install_tasks($install_state);
-
   // Add the Panopoly app selection to the installation process.
   require_once(drupal_get_path('module', 'apps') . '/apps.profile.inc');
   $tasks = $tasks + apps_profile_install_tasks($install_state, array('machine name' => 'panopoly', 'default apps' => array()));
+
+  // Add Localization tasks to the installation process.
+  require_once(DRUPAL_ROOT . '/profiles/l10n_install/l10n_install.profile');
+  $tasks = $tasks + l10n_install_install_tasks($install_state);
 
   return $tasks;
 }
