@@ -83,7 +83,10 @@ projects[honeypot][subdir] = contrib
 
 ; Localization profile
 projects[l10n_install][version] = 1.0-beta24
-projects[l10n_update] = 1.0-beta3
+projects[l10n_update] = 1.x-dev
 projects[l10n_update][subdir] = contrib
+projects[l10n_update][download][type] = git
+projects[l10n_update][download][revision] = fa76206
+projects[l10n_update][download][branch] = 7.x-1.x
 projects[l10n_client] = 1.2
 projects[l10n_client][subdir] = contrib
