@@ -56,3 +56,17 @@ function aeconsulta_tweaks_field_widget_addressfield_standard_form_alter(&$eleme
     $element['locality_block']['dependent_locality']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_js_alter().
+ */
+function aeconsulta_tweaks_js_alter(&$javascript) {
+  global $user;
+  if (!in_array('authenticated user', $user->roles) && !empty($javascript['settings']['data'])) {
+    foreach ($javascript['settings']['data'] as $key => $data) {
+      if (array_key_exists('LoginToboggan', $data)) {
+        $javascript['settings']['data'][$key]['LoginToboggan']['unifiedLoginActiveForm'] = 'register';
+      }
+    }
+  }
+}

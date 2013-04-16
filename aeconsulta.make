@@ -90,3 +90,9 @@ projects[l10n_update][download][revision] = fa76206
 projects[l10n_update][download][branch] = 7.x-1.x
 projects[l10n_client] = 1.2
 projects[l10n_client][subdir] = contrib
+
+; Experimental Participants workflow
+projects[content_access][version] = 1.2-beta2
+projects[content_access][subdir] = contrib
+projects[logintoboggan][version] = 1.3
+projects[logintoboggan][subdir] = contrib
